@@ -1,4 +1,4 @@
 class Muscle < ActiveRecord::Base
-    :muscle has_many :exercises
+    has_many :exercises
     
 end
