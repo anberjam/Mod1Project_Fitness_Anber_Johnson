@@ -12,9 +12,15 @@ class CLI
 
     def self.main_menu
         prompt = TTY::Prompt.new
-        display_menu = prompt.select ("Are you a returning member or a new member?")
-
-
+        display_menu = prompt.select ("Are you a returning member or a new member?") do |member|
+            member.choice "Returning Member"
+            member.choice "New Member"
+        end
+        if display_menu == "Returning Member"
+            self.login
+        else display_menu == "New Member"
+            self.create_account
+        end
     end
 
     def self.create_account
@@ -36,7 +42,8 @@ class CLI
         # @Workout_plans <-- need to build method
         else
             puts "These are not your gains, please try again."
-            system
+            system('clear')
+            self.main_menu
         end
 
     end
@@ -51,7 +58,7 @@ class CLI
   ___|      |			     |      |____
  |   |      |                | 	    |    |
  |   |      |________________|      |    | 
- |   |      |________________|      |    |
+ |   | 25LBS|________________| 25LBS|    |
  |   |      |                |      |    |
  |___|      |                |      |____|
      |	    |                |      |
