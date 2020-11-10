@@ -18,6 +18,7 @@ muscle_group = prompt.select ("Which body part would you like to work out?") do 
     end
 
     if muscle_group == "Legs"
+        
     elsif muscle_group == "Arms"
     elsif muscle_group == "Chest"
     elsif muscle_group == "Shoulders"
@@ -28,6 +29,8 @@ muscle_group = prompt.select ("Which body part would you like to work out?") do 
 end
 
 def self.specific_muscle(muscle_group)
-    muscle = prompt.select ("Which muscle would you like to focus on?")
+    #make 
+    muscle = prompt.select ("Which muscle would you like to focus on?") do |muscle|
+        muscle.choice 
 end
     
