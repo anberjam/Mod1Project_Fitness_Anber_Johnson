@@ -103,9 +103,13 @@ end
         elsif muscle_group == "Arms"
             self.arm_muscles
         elsif muscle_group == "Chest"
+            self.chest_muscles
         elsif muscle_group == "Shoulders"
+            self.shoulder_muscles
         elsif muscle_group == "Back"
+            self.back_muscles
         elsif muscle_group == "Abs"
+            self.ab_muscles
         elsif muscle_group == "I would like to return to the main menu"
         # navigate back to workout menu self.workout_menu
         end
