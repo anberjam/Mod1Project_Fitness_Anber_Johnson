@@ -1,5 +1,10 @@
 require_relative '../config/environment'
 
-cli = CLI.new
+Muscle.all.each do |muscle|
+    puts muscle[:subgroup]
+end
 
-cli.welcome 
+
+#cli = CLI.new
+
+#cli.welcome 
