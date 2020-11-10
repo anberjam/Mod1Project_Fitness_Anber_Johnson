@@ -107,6 +107,7 @@ end
         elsif muscle_group == "Back"
         elsif muscle_group == "Abs"
         elsif muscle_group == "I would like to return to the main menu"
+        # navigate back to workout menu self.workout_menu
         end
     end
 
@@ -146,5 +147,45 @@ end
     end
 
     def self.chest_muscles
-    
+        chest = prompt.select ("Which muscle would you like to focus on?") do |muscle|
+            muscle.choice "Pectoralis Major"
+            muscle.choice "Pectoralis Minor"
+        end  
+        if chest == "Pectoralis Major"
+            #list exercises here
+        elsif chest == "Pectoralis Minor"
+
+        end
+    end
+
+    def self.shoulder_muscles
+        shoulder = prompt.select ("Which muscle would you like to focus on?") do |muscle|
+            muscle.choice "Deltoids"
+        end
+        #no need for if statements, list exercises here
+    end
+
+    def self.back_muscles
+        back = prompt.select ("Which muscle would you like to focus on?") do |muscle|
+            muscle.choice "Trapezius"
+            muscle.choice "Latissimus Dorsi"
+        end
+        if back == "Trapezius"
+            #list exercises
+        elsif back == "Latissimus Dorsi"
+
+        end
+    end
+
+    def self.ab_muscles
+        ab = prompt.select ("Which muscle would you like to focus on?") do |muscle|
+            muscle.choice "Upper Abdominals"
+            muscle.choice "Lower Abdominals"
+            muscle.choice "Obliques"
+        end
+        if ab == "Upper Abdominals"
+            #list exercises here
+        elsif ab == "Lower Abdominals"
+        elsif ab == "Obliques"
+    end
 
