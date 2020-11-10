@@ -1,10 +1,10 @@
 require_relative '../config/environment'
-
-Muscle.all.each do |muscle|
-    puts muscle[:subgroup]
-end
+require 'tty-prompt'
 
 
+#cli = Cli_Navigate_Muscles.new
 #cli = CLI.new
 
 #cli.welcome 
+
+#cli.navigate_muscle_group
