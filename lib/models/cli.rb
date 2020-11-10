@@ -5,6 +5,7 @@ class CLI
 
     def welcome
         
+        puts "Welcome to Work It Out!"
         puts dumbbell
 
     end
@@ -29,6 +30,8 @@ class CLI
         password = prompt.mask("Protect your gains with a password:")
         @user = User.create(username: username, password: password)
         system('clear')
+
+        # if user name exits try a new user name  
         self.login
     end
 
@@ -39,14 +42,21 @@ class CLI
         @user = User.find_by(username: username, password: password)
         if @user
 
-        # @Workout_plans <-- need to build method
+        # @Workout_menu <-- need to build method
         else
             puts "These are not your gains, please try again."
-            system('clear')
+            sleep(2)
             self.main_menu
         end
 
     end
+
+    def Workout_menu
+        prompt = TTY::Prompt.new
+        select_create = prompt.select ("Would you like to select or create a workout plan?")
+
+    end
+
 
 
 
