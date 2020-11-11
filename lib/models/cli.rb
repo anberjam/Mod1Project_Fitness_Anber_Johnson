@@ -53,7 +53,7 @@ class CLI
         prompt = TTY::Prompt.new
         username = prompt.ask("Please enter your gains name:")
         password = prompt.mask("Access your gains with your password:")
-        user_account = User.find_by(username: username, password: password)
+        @user = User.find_by(username: username, password: password)
         if @user
             self.workout_menu
      
@@ -183,6 +183,8 @@ class CLI
             muscle.choice "Choose Different Muscle"
         end
 
+        
+        if arms ==
         muscle = Muscle.find_by(subgroup: arms)
         puts Exercise.find_by(muscle_id: muscle.id).name
 
@@ -203,7 +205,7 @@ class CLI
             #list exercises here
         elsif chest == "Pectoralis Minor"
 
-        elsif chest == "Choose Different Muscle"
+        else chest == "Choose Different Muscle"
             self.navigate_muscle_group
         end
     end
@@ -249,13 +251,15 @@ class CLI
         end
 
         
-        #if ab == "Upper Abdominals"
+        if ab == "Upper Abdominals"
             #list exercises here
         elsif ab == "Lower Abdominals"
         elsif ab == "Obliques"
 
-        elsif ab == "Choose Different Muscle"
+        else ab == "Choose Different Muscle"
             self.navigate_muscle_group
+        end
+
     end
   
 
