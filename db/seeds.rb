@@ -51,29 +51,31 @@ Exercise.create(name: "Deadlift", muscle_id: hammy.id , exercise_set: 3, set_rep
 
 
 #quad exercises 
-Exercise.create(name: , muscle_id: quad.id, exercise_set: , set_reps: , demonstration: )
-Exercise.create(name: , muscle_id: quad.id, exercise_set: , set_reps: , demonstration: )
-Exercise.create(name: , muscle_id: quad.id, exercise_set: , set_reps: , demonstration: )
+Exercise.create(name: "Lunge" , muscle_id: quad.id, exercise_set: 3, set_reps: 12, demonstration: "Start by standing up tall. Step forward with one foot until your leg reaches a 90-degree angle. Lift your front lunging leg to return to the starting position.")
+Exercise.create(name: "Squat", muscle_id: quad.id, exercise_set: 5, set_reps: 10, demonstration: "Start standing with feet just wider than hip-width apart, toes pointed slightly out, clasp hands at chest for balance. Initiate the movement by sending the hips back. Bend knees to lower down as far as possible with chest lifted in a controlled movement. Keep lower back neutral. Press through heels to stand back up to starting position. Repeat.")
+Exercise.create(name: "Bulgarian Split Squat", muscle_id: quad.id, exercise_set: 3, set_reps: 8, demonstration: "Stand facing away from the bench, holding a barbell across your upper back. Have one leg resting on the bench behind you, laces down. Squat with your standing leg until the knee of your trailing leg almost touches the floor. Push up through your front foot to return to the start position.")
 
 #glute exercises
-Exercise.create(name: , muscle_id: glutes.id, exercise_set: , set_reps: , demonstration: )
-Exercise.create(name: , muscle_id: glutes.id, exercise_set: , set_reps: , demonstration: )
-Exercise.create(name: , muscle_id: glutes.id, exercise_set: , set_reps: , demonstration: )
+Exercise.create(name: "Glute Bridge" , muscle_id: glutes.id, exercise_set: 4, set_reps: 15, demonstration: "Lie on you back with your hips and knees flexed, feet on the ground. From this position, raise your butt off of the ground to a height where your body makes a straight line from your knees to your shoulders. To make the exercise more intense, you can add weight by letting a barbell rest on your hips as you complete the motion, or you can put your feet on a slightly higher surface such as a step or a bench." )
+Exercise.create(name: "Sumo Squat" , muscle_id: glutes.id, exercise_set: 3, set_reps: 10, demonstration: "Stand with your feet wider than your shoulders, with your toes pointed out at a 45 degree angle and barbell on your shoulder. While keeping your back straight, descend slowly by bending at the knees and hips as if you are sitting down (squatting). Lower yourself until your quadriceps and hamstrings are parallel to the floor. Return to the starting position by pressing upwards and extending your legs while maintaining an equal distribution of weight on your forefoot and heel.")
+Exercise.create(name: "Hip Thrust", muscle_id: glutes.id, exercise_set: 3, set_reps: 8, demonstration: "Start with your shoulder blades against a bench, and your arms spread across it for stability.  If your shoulders don’t reach the bench, you may need to start with your butt slightly off the floor.  Bend your knees to about 90 degrees, and make sure your feet are flat on the floor. Take a big breath in, blow your air out fully, and brace your core. Squeeze your glutes, lift up your hips pushing the barbell up. Hold for a second or two. Slowly release and repeat." )
+
+ 
 
 #calf exercises
-Exercise.create(name: , muscle_id: calves.id, exercise_set: , set_reps: , demonstration: )
-Exercise.create(name: , muscle_id: calves.id, exercise_set: , set_reps: , demonstration: )
-Exercise.create(name: , muscle_id: calves.id, exercise_set: , set_reps: , demonstration: )
+Exercise.create(name: "Standing Calf Raise", muscle_id: calves.id, exercise_set: 5, set_reps: 10, demonstration: "Holding a dumbbell in your left hand, stand with the ball of your left foot on an elevated surface with your heel hanging off, and your right toes resting on your left ankle. Keeping your core engaged, raise your left heel as high as possible. Slowly lower your heel down below the raised surface until you feel a stretch in your calf. Repeat and do equal reps on both legs." )
+Exercise.create(name: "Seated Calf Raise", muscle_id: calves.id, exercise_set: 3, set_reps: 15, demonstration: "Sit tall on a bench or chair with your feet flat on the ground holding two heavy dumbbells on top of your thighs. Keeping your core engaged, lift your heels off the ground as high as possible. Slowly lower your heels back down to the ground, and repeat.")
+Exercise.create(name: "Jump Rope", muscle_id: calves.id, exercise_set: 3, set_reps: 40, demonstration: "Holding the handles of a jump rope in each hand, jump with both feet as you spin the rope under you and over your head. Keep your core engaged and your shoulders lowered.")
 
 #bi exercises
-Exercise.create(name: , muscle_id: bi.id, exercise_set: , set_reps: , demonstration: )
-Exercise.create(name: , muscle_id: bi.id, exercise_set: , set_reps: , demonstration: )
-Exercise.create(name: , muscle_id: bi.id, exercise_set: , set_reps: , demonstration: )
+Exercise.create(name: "Standing Dumbbell Curl", muscle_id: bi.id, exercise_set: 3, set_reps: 12, demonstration: "Stand holding a dumbbell in each hand with your arms hanging by your sides. Ensure your elbows are close to your torso and your palms facing forward. Keeping your arms stationary, exhale as you curl the weights up to shoulder level while contracting your biceps.")
+Exercise.create(name: "Hammer Curl", muscle_id: bi.id, exercise_set: 3, set_reps: 10, demonstration: "Let a pair of dumbbells hang at arm’s length next to your sides with your palms facing your thighs. Don’t move your arms. Instead, bend your elbows and curl the dumbbells as close to your shoulders as possible. Pause at the top – remember to squeeze – before slowly lowering the weight back to the starting position.")
+Exercise.create(name: "Zottman Curl", muscle_id: bi.id, exercise_set: 3, set_reps: 10, demonstration: "With your dumbbells hanging by your side, turn your arms so your palms face forward. Without moving your upper arms, bend your elbows and curl the dumbbells towards your shoulder. Pause, then rotate the dumbbells so your palms face forward before slowly returning back to your starting position.")
 
 
 #tri exercises
-Exercise.create(name: , muscle_id: tri.id, exercise_set: , set_reps: , demonstration: )
-Exercise.create(name: , muscle_id: tri.id, exercise_set: , set_reps: , demonstration: )
+Exercise.create(name: "Rope Tricep Pushdown", muscle_id: tri.id, exercise_set: , set_reps: , demonstration: "Attach a rope handle to the high pulley of a cable station. Bend your arms and grab the bar with an overhand grip, your hands shoulder-width apart. Tuck your upper arms next to your sides. Without moving your upper arms, push the bar down until your elbows are locked. Slowly return to the starting position.")
+Exercise.create(name: "Overhead Extension", muscle_id: tri.id, exercise_set: , set_reps: , demonstration: "Sit on a bench and grab one dumbbell. Form a diamond shape with both hands to grip the top end of the weight. Raise the dumbbell over your head, keeping your elbows up and your core tight. Lower the dumbbell down the top of your back by bending at the elbow, maintaining your strong chest and keeping your shoulders still. Raise the weight by fully extending your arms, pausing for a count to squeeze at the top of the movement.")
 Exercise.create(name: , muscle_id: tri.id, exercise_set: , set_reps: , demonstration: )
 
 
