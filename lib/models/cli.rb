@@ -1,6 +1,7 @@
 require 'pry'
 require 'tty-prompt'
 
+
 class CLI
 
     def welcome
@@ -28,10 +29,11 @@ class CLI
         prompt = TTY::Prompt.new
         username = prompt.ask("Please enter your gains name:")
         password = prompt.mask("Protect your gains with a password:")
+
         @user = User.create(username: username, password: password)
         system('clear')
 
-        # if user name exits try a new user name  
+        # if Username exits try a new user name  
         self.login
     end
 
@@ -41,7 +43,7 @@ class CLI
         password = prompt.mask("Access your gains with your password:")
         @user = User.find_by(username: username, password: password)
         if @user
-
+            self.workout_menu
         # @Workout_menu <-- need to build method
         else
             puts "These are not your gains, please try again."
@@ -51,21 +53,49 @@ class CLI
 
     end
 
-    def Workout_menu
+    def self.workout_menu
         prompt = TTY::Prompt.new
-        select_create = prompt.select ("Would you like to select or create a workout plan?")
+        select_create = prompt.select ("Would you like to to do?") do |plan|
+            plan.choice "Select Workout Plan"
+            plan.choice "Create Workout Plan"
+            plan.choice "See Current Workout Plan"
+            plan.choice "Update Current Workout Plan"
+        end
+
+        if select_create == "Select Workout Plan"
+            self.create_account
+
+        elsif select_create == "Create Workout Plan"
+            self.create_workout
+
+        else select_create == "See Current Workout Plan"
+            self.current_workout
+        
+        end
+    end
+    
+    def self.select_workout
+        prompt = TTY::Prompt.new
 
     end
 
+    def self.create_workout
 
+    end
 
+    
+
+    def self.current_workout
+    
+    end
 
 
     def dumbbell
-   "
+   " 
+   
       ______                  ______
-     |      |			     |      |
-  ___|      |			     |      |____
+     |      |	             |      |
+  ___|      |	             |      |____
  |   |      |                | 	    |    |
  |   |      |________________|      |    | 
  |   | 25LBS|________________| 25LBS|    |

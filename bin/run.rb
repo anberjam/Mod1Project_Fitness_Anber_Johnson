@@ -4,4 +4,9 @@ require 'tty-prompt'
 cli = CLI.new
 
 cli.welcome 
+
+sleep(1) 
+
 CLI.main_menu
+
+
