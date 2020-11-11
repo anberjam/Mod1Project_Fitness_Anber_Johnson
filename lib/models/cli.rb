@@ -78,7 +78,7 @@ class CLI
 
     end
 
-end
+
 
 
 
@@ -116,6 +116,7 @@ end
     end
 
     def self.leg_muscles
+        prompt = TTY::Prompt.new
         legs = prompt.select ("Which muscle would you like to focus on?") do |muscle|
             muscle.choice "Quadriceps"
             muscle.choice "Hamstrings"
@@ -135,6 +136,7 @@ end
     end
 
     def self.arm_muscles
+        prompt = TTY::Prompt.new
         arms = prompt.select ("Which muscle would you like to focus on?") do |muscle|
             muscle.choice "Biceps"
             muscle.choice "Triceps"
@@ -151,6 +153,7 @@ end
     end
 
     def self.chest_muscles
+        prompt = TTY::Prompt.new
         chest = prompt.select ("Which muscle would you like to focus on?") do |muscle|
             muscle.choice "Pectoralis Major"
             muscle.choice "Pectoralis Minor"
@@ -163,6 +166,7 @@ end
     end
 
     def self.shoulder_muscles
+        prompt = TTY::Prompt.new
         shoulder = prompt.select ("Which muscle would you like to focus on?") do |muscle|
             muscle.choice "Deltoids"
         end
@@ -170,6 +174,7 @@ end
     end
 
     def self.back_muscles
+        prompt = TTY::Prompt.new
         back = prompt.select ("Which muscle would you like to focus on?") do |muscle|
             muscle.choice "Trapezius"
             muscle.choice "Latissimus Dorsi"
@@ -182,6 +187,7 @@ end
     end
 
     def self.ab_muscles
+        prompt = TTY::Prompt.new
         ab = prompt.select ("Which muscle would you like to focus on?") do |muscle|
             muscle.choice "Upper Abdominals"
             muscle.choice "Lower Abdominals"
@@ -192,4 +198,7 @@ end
         elsif ab == "Lower Abdominals"
         elsif ab == "Obliques"
     end
+end
+
+end
 
