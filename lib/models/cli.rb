@@ -1,7 +1,9 @@
 require 'pry'
 require 'tty-prompt'
 
+
 class CLI
+    attr_accessor :exercise, :muscle, :user, :workout_plan
 
     def welcome
         
@@ -28,10 +30,11 @@ class CLI
         prompt = TTY::Prompt.new
         username = prompt.ask("Please enter your gains name:")
         password = prompt.mask("Protect your gains with a password:")
+
         @user = User.create(username: username, password: password)
         system('clear')
 
-        # if user name exits try a new user name  
+        # if Username exits try a new user name  
         self.login
     end
 
@@ -41,8 +44,8 @@ class CLI
         password = prompt.mask("Access your gains with your password:")
         @user = User.find_by(username: username, password: password)
         if @user
-
-        # @Workout_menu <-- need to build method
+            self.workout_menu
+     
         else
             puts "These are not your gains, please try again."
             sleep(2)
@@ -51,21 +54,51 @@ class CLI
 
     end
 
-    def Workout_menu
+    def self.workout_menu
         prompt = TTY::Prompt.new
-        select_create = prompt.select ("Would you like to select or create a workout plan?")
+        select_create = prompt.select ("Would you like to to do?") do |plan|
+            plan.choice "Select Workout Plan"
+            plan.choice "Create Workout Plan"
+            plan.choice "See Current Workout Plan"
+            
+        end
+
+        if select_create == "Select Workout Plan"
+            #self.create_account
+            
+
+        elsif select_create == "Create Workout Plan"
+            #self.create_workout
+            self.navigate_muscle_group
+
+        else select_create == "See Current Workout Plan"
+            self.current_workout
+        
+        end
+    end
+    
+    def self.select_workout
+        prompt = TTY::Prompt.new
 
     end
 
+    def self.create_workout
 
+    end
 
+    
+
+    def self.current_workout
+    
+    end
 
 
     def dumbbell
-   "
+   " 
+   
       ______                  ______
-     |      |			     |      |
-  ___|      |			     |      |____
+     |      |	             |      |
+  ___|      |	             |      |____
  |   |      |                | 	    |    |
  |   |      |________________|      |    | 
  |   | 25LBS|________________| 25LBS|    |
@@ -77,6 +110,8 @@ class CLI
      "
 
     end
+
+
 
 
 
@@ -111,7 +146,7 @@ class CLI
         elsif muscle_group == "Abs"
             self.ab_muscles
         elsif muscle_group == "I would like to return to the main menu"
-        # navigate back to workout menu self.workout_menu
+            self.workout_menu
         end
     end
 
@@ -143,13 +178,18 @@ class CLI
             muscle.choice "Forearms"
         end
 
-        if arms == "Biceps"
-        # list exercises here
-        elsif arms == "Triceps"
+        muscle = Muscle.find_by(subgroup: arms)
+        puts Exercise.find_by(muscle_id: muscle.id).name
 
-        elsif arms == "Forearms"
         
-        end
+        #if arms == "Biceps"
+ 
+        
+        #elsif arms == "Triceps"
+
+        #elsif arms == "Forearms"
+        
+       # end
     end
 
     def self.chest_muscles
@@ -193,12 +233,14 @@ class CLI
             muscle.choice "Lower Abdominals"
             muscle.choice "Obliques"
         end
-        if ab == "Upper Abdominals"
+
+        
+        #if ab == "Upper Abdominals"
             #list exercises here
-        elsif ab == "Lower Abdominals"
-        elsif ab == "Obliques"
+        #elsif ab == "Lower Abdominals"
+        #elsif ab == "Obliques"
     end
-end
+  
 
 end
 
