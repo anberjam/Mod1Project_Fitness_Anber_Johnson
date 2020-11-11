@@ -3,6 +3,7 @@ require 'tty-prompt'
 
 
 class CLI
+    attr_accessor :exercise, :muscle, :user, :workout_plan
 
     def welcome
         
@@ -86,21 +87,13 @@ class CLI
         
         end
     end
-
-
+    
     def self.select_workout
         prompt = TTY::Prompt.new
-        choose_plan = prompt.select ("Please choose a workout ?") do |plan|
-            plan.choice "Select Workout Plan"
-            plan.choice "Create Workout Plan"
-            plan.choice "See Current Workout Plan"
-            plan.choice "Back to Main Menu"
-        end
 
     end
 
-    
-    
+
 
     def self.current_workout
         # Workout_plan.all.select {|plan|plan.user_id == self}
@@ -124,10 +117,6 @@ class CLI
      "
 
     end
-
-
-
-
 
 
 
@@ -194,11 +183,9 @@ class CLI
             muscle.choice "Choose Different Muscle"
         end
 
-        if arms == "Biceps"
-        # list exercises here
-        elsif arms == "Triceps"
+        muscle = Muscle.find_by(subgroup: arms)
+        puts Exercise.find_by(muscle_id: muscle.id).name
 
-        elsif arms == "Forearms"
         
         elsif arms == "Choose Different Muscle"
             self.navigate_muscle_group
@@ -260,7 +247,9 @@ class CLI
             muscle.choice "Obliques"
             muscle.choice "Choose Different Muscle"
         end
-        if ab == "Upper Abdominals"
+
+        
+        #if ab == "Upper Abdominals"
             #list exercises here
         elsif ab == "Lower Abdominals"
         elsif ab == "Obliques"
@@ -268,7 +257,7 @@ class CLI
         elsif ab == "Choose Different Muscle"
             self.navigate_muscle_group
     end
-end
+  
 
     def self.close
         system("clear")
