@@ -89,7 +89,13 @@ class CLI
 
 
     def self.select_workout
-        
+        prompt = TTY::Prompt.new
+        choose_plan = prompt.select ("Please choose a workout ?") do |plan|
+            plan.choice "Select Workout Plan"
+            plan.choice "Create Workout Plan"
+            plan.choice "See Current Workout Plan"
+            plan.choice "Back to Main Menu"
+        end
 
     end
 
@@ -97,8 +103,7 @@ class CLI
     
 
     def self.current_workout
-
-    
+        # Workout_plan.all.select {|plan|plan.user_id == self}
     end
 
 
