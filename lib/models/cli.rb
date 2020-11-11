@@ -18,24 +18,35 @@ class CLI
         display_menu = prompt.select ("Are you a returning member or a new member?") do |member|
             member.choice "Returning Member"
             member.choice "New Member"
+            member.choice "Exit"
         end
         if display_menu == "Returning Member"
             self.login
-        else display_menu == "New Member"
+        elsif display_menu == "New Member"
             self.create_account
+        elsif display_menu == "Exit"
+            self.close
         end
     end
 
     def self.create_account
         prompt = TTY::Prompt.new
         username = prompt.ask("Please enter your gains name:")
-        password = prompt.mask("Protect your gains with a password:")
+        exists = User.find_by(username: username)
+        sleep(1)
 
-        @user = User.create(username: username, password: password)
-        system('clear')
+        if exists == nil
+            password = prompt.mask("Protect your gains with a password:")
+            @user = User.create(username: username, password: password)
+            system('clear')
+            self.login
+        else
+            puts "You shouldn't share gains with someone else, please try a new name."
+            sleep(1)
+            self.create_account
 
         # if Username exits try a new user name  
-        self.login
+        end
     end
 
     def self.login
@@ -60,19 +71,19 @@ class CLI
             plan.choice "Select Workout Plan"
             plan.choice "Create Workout Plan"
             plan.choice "See Current Workout Plan"
-            
+            plan.choice "Back to Main Menu"
         end
 
         if select_create == "Select Workout Plan"
-            #self.create_account
-            
+            self.create_account
 
         elsif select_create == "Create Workout Plan"
-            #self.create_workout
             self.navigate_muscle_group
 
-        else select_create == "See Current Workout Plan"
+        elsif select_create == "See Current Workout Plan"
             self.current_workout
+        else select_create == "Back to Main Menu"
+            self.main_menu
         
         end
     end
@@ -82,14 +93,10 @@ class CLI
 
     end
 
-    def self.create_workout
 
-    end
-
-    
 
     def self.current_workout
-    
+        # Workout_plan.all.select {|plan|plan.user_id == self}
     end
 
 
@@ -110,12 +117,6 @@ class CLI
      "
 
     end
-
-
-
-
-
-
 
 
 
@@ -157,6 +158,7 @@ class CLI
             muscle.choice "Hamstrings"
             muscle.choice "Glutes"
             muscle.choice "Calves"
+            muscle.choice "Choose Different Muscle"
         end
 
         if legs == "Quadriceps"
@@ -167,6 +169,8 @@ class CLI
 
         elsif legs == "Calves"
 
+        elsif legs == "Choose Different Muscle"
+            self.navigate_muscle_group
         end
     end
 
@@ -176,10 +180,14 @@ class CLI
             muscle.choice "Biceps"
             muscle.choice "Triceps"
             muscle.choice "Forearms"
+            muscle.choice "Choose Different Muscle"
         end
 
+        
+        if arms ==
         muscle = Muscle.find_by(subgroup: arms)
 
+<<<<<<< HEAD
         Exercise.find_each do |exercise|
             if exercise.muscle_id == muscle.id
                 puts exercise.name
@@ -187,6 +195,12 @@ class CLI
             end
         end
 
+=======
+        
+        elsif arms == "Choose Different Muscle"
+            self.navigate_muscle_group
+        end
+>>>>>>> 9480f4b53ec3bae56e769384c8017e4067805264
     end
 
     def self.chest_muscles
@@ -194,22 +208,36 @@ class CLI
         chest = prompt.select ("Which muscle would you like to focus on?") do |muscle|
             muscle.choice "Pectoralis Major"
             muscle.choice "Pectoralis Minor"
+            muscle.choice "Choose Different Muscle"
         end  
         muscle = Muscle.find_by(subgroup: chest)
 
+<<<<<<< HEAD
         Exercise.find_each do |exercise|
             if exercise.muscle_id == muscle.id
                 puts exercise.name
                 puts exercise.demonstration
             end
+=======
+        else chest == "Choose Different Muscle"
+            self.navigate_muscle_group
+        end
+>>>>>>> 9480f4b53ec3bae56e769384c8017e4067805264
     end
 
     def self.shoulder_muscles
         prompt = TTY::Prompt.new
         shoulder = prompt.select ("Which muscle would you like to focus on?") do |muscle|
             muscle.choice "Deltoids"
+            muscle.choice "Choose Different Muscle"
         end
-        #no need for if statements, list exercises here
+        if shoulder = "Deltoids"
+            #list excercies
+        else shoulder == "Choose Different Muscle"
+            self.navigate_muscle_group
+        end
+
+        
     end
 
     def self.back_muscles
@@ -217,11 +245,14 @@ class CLI
         back = prompt.select ("Which muscle would you like to focus on?") do |muscle|
             muscle.choice "Trapezius"
             muscle.choice "Latissimus Dorsi"
+            muscle.choice "Choose Different Muscle"
         end
         if back == "Trapezius"
             #list exercises
         elsif back == "Latissimus Dorsi"
 
+        elsif back == "Choose Different Muscle"
+            self.navigate_muscle_group
         end
     end
 
@@ -231,15 +262,29 @@ class CLI
             muscle.choice "Upper Abdominals"
             muscle.choice "Lower Abdominals"
             muscle.choice "Obliques"
+            muscle.choice "Choose Different Muscle"
         end
 
         
-        #if ab == "Upper Abdominals"
+        if ab == "Upper Abdominals"
             #list exercises here
-        #elsif ab == "Lower Abdominals"
-        #elsif ab == "Obliques"
+        elsif ab == "Lower Abdominals"
+        elsif ab == "Obliques"
+
+        else ab == "Choose Different Muscle"
+            self.navigate_muscle_group
+        end
+
     end
   
+
+    def self.close
+        system("clear")
+        sleep(1)
+        puts "See you on your next workout!"
+        exit
+    end
+
 
 end
 
