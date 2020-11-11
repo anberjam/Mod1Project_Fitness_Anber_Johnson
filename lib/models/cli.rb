@@ -179,17 +179,14 @@ class CLI
         end
 
         muscle = Muscle.find_by(subgroup: arms)
-        puts Exercise.find_by(muscle_id: muscle.id).name
 
-        
-        #if arms == "Biceps"
- 
-        
-        #elsif arms == "Triceps"
+        Exercise.find_each do |exercise|
+            if exercise.muscle_id == muscle.id
+                puts exercise.name
+                puts exercise.demonstration
+            end
+        end
 
-        #elsif arms == "Forearms"
-        
-       # end
     end
 
     def self.chest_muscles
@@ -198,11 +195,13 @@ class CLI
             muscle.choice "Pectoralis Major"
             muscle.choice "Pectoralis Minor"
         end  
-        if chest == "Pectoralis Major"
-            #list exercises here
-        elsif chest == "Pectoralis Minor"
+        muscle = Muscle.find_by(subgroup: chest)
 
-        end
+        Exercise.find_each do |exercise|
+            if exercise.muscle_id == muscle.id
+                puts exercise.name
+                puts exercise.demonstration
+            end
     end
 
     def self.shoulder_muscles
