@@ -17,31 +17,42 @@ class CLI
         display_menu = prompt.select ("Are you a returning member or a new member?") do |member|
             member.choice "Returning Member"
             member.choice "New Member"
+            member.choice "Exit"
         end
         if display_menu == "Returning Member"
             self.login
-        else display_menu == "New Member"
+        elsif display_menu == "New Member"
             self.create_account
+        elsif display_menu == "Exit"
+            self.close
         end
     end
 
     def self.create_account
         prompt = TTY::Prompt.new
         username = prompt.ask("Please enter your gains name:")
-        password = prompt.mask("Protect your gains with a password:")
+        exists = User.find_by(username: username)
+        sleep(1)
 
-        @user = User.create(username: username, password: password)
-        system('clear')
+        if exists == nil
+            password = prompt.mask("Protect your gains with a password:")
+            @user = User.create(username: username, password: password)
+            system('clear')
+            self.login
+        else
+            puts "You shouldn't share gains with someone else, please try a new name."
+            sleep(1)
+            self.create_account
 
         # if Username exits try a new user name  
-        self.login
+        end
     end
 
     def self.login
         prompt = TTY::Prompt.new
         username = prompt.ask("Please enter your gains name:")
         password = prompt.mask("Access your gains with your password:")
-        @user = User.find_by(username: username, password: password)
+        user_account = User.find_by(username: username, password: password)
         if @user
             self.workout_menu
      
@@ -59,7 +70,7 @@ class CLI
             plan.choice "Select Workout Plan"
             plan.choice "Create Workout Plan"
             plan.choice "See Current Workout Plan"
-            
+            plan.choice "Back to Main Menu"
         end
 
         if select_create == "Select Workout Plan"
@@ -68,8 +79,10 @@ class CLI
         elsif select_create == "Create Workout Plan"
             self.navigate_muscle_group
 
-        else select_create == "See Current Workout Plan"
+        elsif select_create == "See Current Workout Plan"
             self.current_workout
+        else select_create == "Back to Main Menu"
+            self.main_menu
         
         end
     end
@@ -84,7 +97,7 @@ class CLI
     
 
     def self.current_workout
-        
+
     
     end
 
@@ -251,6 +264,14 @@ class CLI
             self.navigate_muscle_group
     end
 end
+
+    def self.close
+        system("clear")
+        sleep(1)
+        puts "See you on your next workout!"
+        exit
+    end
+
 
 end
 
