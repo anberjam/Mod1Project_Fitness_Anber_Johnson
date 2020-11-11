@@ -66,26 +66,25 @@ class CLI
             self.create_account
 
         elsif select_create == "Create Workout Plan"
-            self.create_workout
+            self.navigate_muscle_group
 
         else select_create == "See Current Workout Plan"
             self.current_workout
         
         end
     end
-    
+
+
     def self.select_workout
-        prompt = TTY::Prompt.new
+        
 
     end
 
-    def self.create_workout
-
-    end
-
+    
     
 
     def self.current_workout
+        
     
     end
 
@@ -141,7 +140,7 @@ class CLI
         elsif muscle_group == "Abs"
             self.ab_muscles
         elsif muscle_group == "I would like to return to the main menu"
-        # navigate back to workout menu self.workout_menu
+            self.workout_menu
         end
     end
 
@@ -152,6 +151,7 @@ class CLI
             muscle.choice "Hamstrings"
             muscle.choice "Glutes"
             muscle.choice "Calves"
+            muscle.choice "Choose Different Muscle"
         end
 
         if legs == "Quadriceps"
@@ -162,6 +162,8 @@ class CLI
 
         elsif legs == "Calves"
 
+        elsif legs == "Choose Different Muscle"
+            self.navigate_muscle_group
         end
     end
 
@@ -171,6 +173,7 @@ class CLI
             muscle.choice "Biceps"
             muscle.choice "Triceps"
             muscle.choice "Forearms"
+            muscle.choice "Choose Different Muscle"
         end
 
         if arms == "Biceps"
@@ -179,6 +182,8 @@ class CLI
 
         elsif arms == "Forearms"
         
+        elsif arms == "Choose Different Muscle"
+            self.navigate_muscle_group
         end
     end
 
@@ -187,11 +192,14 @@ class CLI
         chest = prompt.select ("Which muscle would you like to focus on?") do |muscle|
             muscle.choice "Pectoralis Major"
             muscle.choice "Pectoralis Minor"
+            muscle.choice "Choose Different Muscle"
         end  
         if chest == "Pectoralis Major"
             #list exercises here
         elsif chest == "Pectoralis Minor"
 
+        elsif chest == "Choose Different Muscle"
+            self.navigate_muscle_group
         end
     end
 
@@ -199,8 +207,15 @@ class CLI
         prompt = TTY::Prompt.new
         shoulder = prompt.select ("Which muscle would you like to focus on?") do |muscle|
             muscle.choice "Deltoids"
+            muscle.choice "Choose Different Muscle"
         end
-        #no need for if statements, list exercises here
+        if shoulder = "Deltoids"
+            #list excercies
+        else shoulder == "Choose Different Muscle"
+            self.navigate_muscle_group
+        end
+
+        
     end
 
     def self.back_muscles
@@ -208,11 +223,14 @@ class CLI
         back = prompt.select ("Which muscle would you like to focus on?") do |muscle|
             muscle.choice "Trapezius"
             muscle.choice "Latissimus Dorsi"
+            muscle.choice "Choose Different Muscle"
         end
         if back == "Trapezius"
             #list exercises
         elsif back == "Latissimus Dorsi"
 
+        elsif back == "Choose Different Muscle"
+            self.navigate_muscle_group
         end
     end
 
@@ -222,11 +240,15 @@ class CLI
             muscle.choice "Upper Abdominals"
             muscle.choice "Lower Abdominals"
             muscle.choice "Obliques"
+            muscle.choice "Choose Different Muscle"
         end
         if ab == "Upper Abdominals"
             #list exercises here
         elsif ab == "Lower Abdominals"
         elsif ab == "Obliques"
+
+        elsif ab == "Choose Different Muscle"
+            self.navigate_muscle_group
     end
 end
 
