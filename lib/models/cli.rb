@@ -44,7 +44,7 @@ class CLI
         @user = User.find_by(username: username, password: password)
         if @user
             self.workout_menu
-        # @Workout_menu <-- need to build method
+     
         else
             puts "These are not your gains, please try again."
             sleep(2)
@@ -59,7 +59,7 @@ class CLI
             plan.choice "Select Workout Plan"
             plan.choice "Create Workout Plan"
             plan.choice "See Current Workout Plan"
-            plan.choice "Update Current Workout Plan"
+            
         end
 
         if select_create == "Select Workout Plan"
