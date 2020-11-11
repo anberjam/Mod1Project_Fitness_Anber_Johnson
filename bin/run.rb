@@ -4,5 +4,11 @@ require 'tty-prompt'
 cli = CLI.new
 
 cli.welcome 
+
+sleep(1) 
+
 CLI.main_menu
+
+CLI.workout_menu
+
 CLI.navigate_muscle_group
