@@ -178,13 +178,18 @@ class CLI
             muscle.choice "Forearms"
         end
 
-        if arms == "Biceps"
-        # list exercises here
-        elsif arms == "Triceps"
+        muscle = Muscle.find_by(subgroup: arms)
+        puts Exercise.find_by(muscle_id: muscle.id).name
 
-        elsif arms == "Forearms"
         
-        end
+        #if arms == "Biceps"
+ 
+        
+        #elsif arms == "Triceps"
+
+        #elsif arms == "Forearms"
+        
+       # end
     end
 
     def self.chest_muscles
@@ -228,12 +233,14 @@ class CLI
             muscle.choice "Lower Abdominals"
             muscle.choice "Obliques"
         end
-        if ab == "Upper Abdominals"
+
+        
+        #if ab == "Upper Abdominals"
             #list exercises here
-        elsif ab == "Lower Abdominals"
-        elsif ab == "Obliques"
+        #elsif ab == "Lower Abdominals"
+        #elsif ab == "Obliques"
     end
-end    
+  
 
 end
 
