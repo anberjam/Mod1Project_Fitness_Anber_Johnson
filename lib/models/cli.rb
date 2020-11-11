@@ -3,6 +3,7 @@ require 'tty-prompt'
 
 
 class CLI
+    attr_accessor :exercise, :muscle, :user, :workout_plan
 
     def welcome
         
