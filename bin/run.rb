@@ -3,6 +3,7 @@ require 'tty-prompt'
 
 cli = CLI.new
 
+puts Exercise.all
 
 cli.welcome 
 
