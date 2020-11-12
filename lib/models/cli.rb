@@ -14,6 +14,8 @@ class CLI
         puts pastel.green(font.write("WorkItOut"))
         puts pastel.green(dumbbell)
 
+        puts pastel.red("Disclaimer: No Ego Lifting")
+
     end
 
 
@@ -102,11 +104,6 @@ class CLI
             puts "Sets: #{e.exercise_set}"
             puts "Reps: #{e.set_reps}"
             puts ""
-<<<<<<< HEAD
-            counter +=1
-            end
-        end
-=======
             
         end
     end
@@ -116,7 +113,6 @@ class CLI
             self.workout_menu
 
         else
->>>>>>> 42fd2ff6cc0012c94cf43a653f74a3086ece1d53
         
         delete_exercise = prompt.ask ("If you want to delete any of the exercises from your workout plan, please enter its number. Otherwise, enter 'N'")
         if delete_exercise == 'N' || delete_exercise == 'n'
