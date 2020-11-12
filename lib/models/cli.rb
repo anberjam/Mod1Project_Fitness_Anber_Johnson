@@ -92,25 +92,27 @@ class CLI
 
     def self.current_workout
         system('clear')
-        counter = 1
-        prompt = TTY::Prompt.new
-        if Workout_Plan.all.count == 0
-            puts "You currently have no exercises in your workout plan"
-            sleep(3)
-            self.workout_menu
 
-        else
+            counter = 0
+            prompt = TTY::Prompt.new
         Workout_Plan.all.each do |workout_plan|
             if workout_plan.user_id == @user.id
+                counter +=1
              e = Exercise.find(workout_plan.exercise_id)
             puts "Exercise ##{counter}: #{e.name}"
             puts "#{e.demonstration}"
             puts "Sets: #{e.exercise_set}"
             puts "Reps: #{e.set_reps}"
             puts ""
-            counter +=1
+            
         end
     end
+    if counter == 0
+        puts "You do not have any exercises in your Workout Plan"
+            sleep (3)
+            self.workout_menu
+
+        else
         
         delete_exercise = prompt.ask ("If you want to delete any of the exercises from your workout plan, please enter its number. Otherwise, enter 'N'")
         if delete_exercise == 'N' || delete_exercise == 'n'
@@ -125,6 +127,7 @@ class CLI
         self.current_workout
     end
     end
+
 
 
     def dumbbell
