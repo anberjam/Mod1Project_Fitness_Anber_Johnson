@@ -1,6 +1,10 @@
 require_relative '../config/environment'
 require 'tty-prompt'
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> master
 
 cli = CLI.new
 
