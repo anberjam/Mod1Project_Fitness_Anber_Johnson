@@ -68,16 +68,15 @@ class CLI
     def self.workout_menu
         prompt = TTY::Prompt.new
         select_create = prompt.select ("Would you like to to do?") do |plan|
-            plan.choice "Select Workout Plan"
-            plan.choice "Create Workout Plan"
+            plan.choice "Add to Workout Plan"
             plan.choice "See Current Workout Plan"
             plan.choice "Back to Main Menu"
         end
+        
 
-        if select_create == "Select Workout Plan"
-            self.create_account
-
-        elsif select_create == "Create Workout Plan"
+        if select_create == "Add to Workout Plan"
+        #wp_name = prompt.ask("What would you like to name your Workout Plan?")
+        #Workout_Plan.create(name: wp_name, user_id: @user.id)
             self.navigate_muscle_group
 
         elsif select_create == "See Current Workout Plan"
@@ -88,10 +87,10 @@ class CLI
         end
     end
     
-    def self.select_workout
-        prompt = TTY::Prompt.new
+    #def self.select_workout
+     #   prompt = TTY::Prompt.new
 
-    end
+    #end
 
 
 
@@ -178,7 +177,7 @@ class CLI
                     counter+=1
                 end
             end
-            add_to_wp = prompt.select ("Would you like to add any of these exercises to your workout plan?") do |action|
+            add_to_wp = prompt.select ("Would you like to add any of these exercises to your workout plans?") do |action|
                 action.choice "Add Exercise #1"
                 action.choice "Add Exercise #2"
                 action.choice "Add Exercise #3"
@@ -186,11 +185,13 @@ class CLI
             end
 
             if add_to_wp == "Add Exercise #1"
-
+                Workout_Plan.create(exercise_id: exercises_for_muscle[0].id, user_id: @user.id)
 
             elsif add_to_wp == "Add Exercise #2"
+                exercises_for_muscle[1].id
 
             elsif add_to_wp == "Add Exercise #3"
+                exercises_for_muscle[2].id
 
             elsif add_to_wp == "Choose Different Muscle"
                 self.navigate_muscle_group
@@ -224,7 +225,7 @@ class CLI
                     counter+=1
                 end
             end
-            add_to_wp = prompt.select ("Would you like to add any of these exercises to your workout plan?") do |action|
+            add_to_wp = prompt.select ("Would you like to add any of these exercises to your workout plans?") do |action|
                 action.choice "Add Exercise #1"
                 action.choice "Add Exercise #2"
                 action.choice "Add Exercise #3"
@@ -270,7 +271,7 @@ class CLI
                     counter+=1
                 end
             end
-            add_to_wp = prompt.select ("Would you like to add any of these exercises to your workout plan?") do |action|
+            add_to_wp = prompt.select ("Would you like to add any of these exercises to your workout plans?") do |action|
                 action.choice "Add Exercise #1"
                 action.choice "Add Exercise #2"
                 action.choice "Add Exercise #3"
@@ -314,7 +315,7 @@ class CLI
                     counter+=1
                 end
             end
-            add_to_wp = prompt.select ("Would you like to add any of these exercises to your workout plan?") do |action|
+            add_to_wp = prompt.select ("Would you like to add any of these exercises to your workout plans?") do |action|
                 action.choice "Add Exercise #1"
                 action.choice "Add Exercise #2"
                 action.choice "Add Exercise #3"
@@ -360,7 +361,7 @@ class CLI
                     counter+=1
                 end
             end
-            add_to_wp = prompt.select ("Would you like to add any of these exercises to your workout plan?") do |action|
+            add_to_wp = prompt.select ("Would you like to add any of these exercises to your workout plans?") do |action|
                 action.choice "Add Exercise #1"
                 action.choice "Add Exercise #2"
                 action.choice "Add Exercise #3"
@@ -407,7 +408,7 @@ class CLI
                     counter+=1
                 end
             end
-            add_to_wp = prompt.select ("Would you like to add any of these exercises to your workout plan?") do |action|
+            add_to_wp = prompt.select ("Would you like to add any of these exercises to your workout plans?") do |action|
                 action.choice "Add Exercise #1"
                 action.choice "Add Exercise #2"
                 action.choice "Add Exercise #3"
@@ -415,12 +416,12 @@ class CLI
             end
 
             if add_to_wp == "Add Exercise #1"
-
-
+                #check to make sure exercises don't repeat
+                Workout_Plan.add_exercise[exercises_for_muscle[0]]
             elsif add_to_wp == "Add Exercise #2"
-
+                Workout_Plan.add_exercise[exercises_for_muscle[1]]
             elsif add_to_wp == "Add Exercise #3"
-
+                Workout_Plan.add_exercise[exercises_for_muscle[2]]
             elsif add_to_wp == "Choose Different Muscle"
                 self.navigate_muscle_group
             end

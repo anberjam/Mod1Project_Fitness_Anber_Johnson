@@ -1,9 +1,7 @@
 require_relative '../config/environment'
 require 'tty-prompt'
 
-Exercise.all.each do |exercise|
-    puts exercise
-end
+
 
 cli = CLI.new
 
