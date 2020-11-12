@@ -161,16 +161,40 @@ class CLI
             muscle.choice "Choose Different Muscle"
         end
 
-        if legs == "Quadriceps"
-        # list exercises her
-        elsif legs == "Hamstrings"
-
-        elsif legs == "Glutes"
-
-        elsif legs == "Calves"
-
-        elsif legs == "Choose Different Muscle"
+        if legs == "Choose Different Muscle"
             self.navigate_muscle_group
+        
+        else
+            system('clear')
+            muscle = Muscle.find_by(subgroup: legs)
+            counter =1
+            exercises_for_muscle = []
+            Exercise.find_each do |exercise|
+                if exercise.muscle_id == muscle.id
+                    exercises_for_muscle << exercise
+                    puts "Exercise ##{counter} #{exercise.name}"
+                    puts exercise.demonstration
+                    puts ""
+                    counter+=1
+                end
+            end
+            add_to_wp = prompt.select ("Would you like to add any of these exercises to your workout plan?") do |action|
+                action.choice "Add Exercise #1"
+                action.choice "Add Exercise #2"
+                action.choice "Add Exercise #3"
+                action.choice "Choose Different Muscle"
+            end
+
+            if add_to_wp == "Add Exercise #1"
+
+
+            elsif add_to_wp == "Add Exercise #2"
+
+            elsif add_to_wp == "Add Exercise #3"
+
+            elsif add_to_wp == "Choose Different Muscle"
+                self.navigate_muscle_group
+            end
         end
     end
 
@@ -183,13 +207,40 @@ class CLI
             muscle.choice "Choose Different Muscle"
         end
 
-        
-        
-        #muscle = Muscle.find_by(subgroup: arms)
-
-        
         if arms == "Choose Different Muscle"
             self.navigate_muscle_group
+        
+        else
+            system('clear')
+            muscle = Muscle.find_by(subgroup: arms)
+            counter =1
+            exercises_for_muscle = []
+            Exercise.find_each do |exercise|
+                if exercise.muscle_id == muscle.id
+                    exercises_for_muscle << exercise
+                    puts "Exercise ##{counter} #{exercise.name}"
+                    puts exercise.demonstration
+                    puts ""
+                    counter+=1
+                end
+            end
+            add_to_wp = prompt.select ("Would you like to add any of these exercises to your workout plan?") do |action|
+                action.choice "Add Exercise #1"
+                action.choice "Add Exercise #2"
+                action.choice "Add Exercise #3"
+                action.choice "Choose Different Muscle"
+            end
+
+            if add_to_wp == "Add Exercise #1"
+
+
+            elsif add_to_wp == "Add Exercise #2"
+
+            elsif add_to_wp == "Add Exercise #3"
+
+            elsif add_to_wp == "Choose Different Muscle"
+                self.navigate_muscle_group
+            end
         end
     end
 
@@ -204,6 +255,38 @@ class CLI
 
         if chest == "Choose Different Muscle"
             self.navigate_muscle_group
+
+        else
+            system('clear')
+            muscle = Muscle.find_by(subgroup: chest)
+            counter =1
+            exercises_for_muscle = []
+            Exercise.find_each do |exercise|
+                if exercise.muscle_id == muscle.id
+                    exercises_for_muscle << exercise
+                    puts "Exercise ##{counter} #{exercise.name}"
+                    puts exercise.demonstration
+                    puts ""
+                    counter+=1
+                end
+            end
+            add_to_wp = prompt.select ("Would you like to add any of these exercises to your workout plan?") do |action|
+                action.choice "Add Exercise #1"
+                action.choice "Add Exercise #2"
+                action.choice "Add Exercise #3"
+                action.choice "Choose Different Muscle"
+            end
+
+            if add_to_wp == "Add Exercise #1"
+
+
+            elsif add_to_wp == "Add Exercise #2"
+
+            elsif add_to_wp == "Add Exercise #3"
+
+            elsif add_to_wp == "Choose Different Muscle"
+                self.navigate_muscle_group
+            end
         end
     end
 
@@ -214,14 +297,43 @@ class CLI
             muscle.choice "Choose Different Muscle"
         end
 
-        if shoulder = "Deltoids"
-            #list excercies
-        elsif shoulder == "Choose Different Muscle"
+        if shoulder == "Choose Different Muscle"
             self.navigate_muscle_group
-        end
 
-        
+        else
+            system('clear')
+            muscle = Muscle.find_by(subgroup: shoulder)
+            counter =1
+            exercises_for_muscle = []
+            Exercise.find_each do |exercise|
+                if exercise.muscle_id == muscle.id
+                    exercises_for_muscle << exercise
+                    puts "Exercise ##{counter} #{exercise.name}"
+                    puts exercise.demonstration
+                    puts ""
+                    counter+=1
+                end
+            end
+            add_to_wp = prompt.select ("Would you like to add any of these exercises to your workout plan?") do |action|
+                action.choice "Add Exercise #1"
+                action.choice "Add Exercise #2"
+                action.choice "Add Exercise #3"
+                action.choice "Choose Different Muscle"
+            end
+
+            if add_to_wp == "Add Exercise #1"
+
+
+            elsif add_to_wp == "Add Exercise #2"
+
+            elsif add_to_wp == "Add Exercise #3"
+
+            elsif add_to_wp == "Choose Different Muscle"
+                self.navigate_muscle_group
+            end
+        end
     end
+
 
     def self.back_muscles
         prompt = TTY::Prompt.new
@@ -230,14 +342,44 @@ class CLI
             muscle.choice "Latissimus Dorsi"
             muscle.choice "Choose Different Muscle"
         end
-        if back == "Trapezius"
-            #list exercises
-        elsif back == "Latissimus Dorsi"
-
-        elsif back == "Choose Different Muscle"
+        
+        if back == "Choose Different Muscle"
             self.navigate_muscle_group
+
+        else
+            system('clear')
+            muscle = Muscle.find_by(subgroup: back)
+            counter =1
+            exercises_for_muscle = []
+            Exercise.find_each do |exercise|
+                if exercise.muscle_id == muscle.id
+                    exercises_for_muscle << exercise
+                    puts "Exercise ##{counter} #{exercise.name}"
+                    puts exercise.demonstration
+                    puts ""
+                    counter+=1
+                end
+            end
+            add_to_wp = prompt.select ("Would you like to add any of these exercises to your workout plan?") do |action|
+                action.choice "Add Exercise #1"
+                action.choice "Add Exercise #2"
+                action.choice "Add Exercise #3"
+                action.choice "Choose Different Muscle"
+            end
+
+            if add_to_wp == "Add Exercise #1"
+
+
+            elsif add_to_wp == "Add Exercise #2"
+
+            elsif add_to_wp == "Add Exercise #3"
+
+            elsif add_to_wp == "Choose Different Muscle"
+                self.navigate_muscle_group
+            end
         end
     end
+
 
     def self.ab_muscles
         prompt = TTY::Prompt.new
@@ -248,16 +390,41 @@ class CLI
             muscle.choice "Choose Different Muscle"
         end
 
-        
-        if ab == "Upper Abdominals"
-            #list exercises here
-        elsif ab == "Lower Abdominals"
-        elsif ab == "Obliques"
-
-        else ab == "Choose Different Muscle"
+        if ab == "Choose Different Muscle"
             self.navigate_muscle_group
-        end
+ 
+        else
+            system('clear')
+            muscle = Muscle.find_by(subgroup: ab)
+            counter =1
+            exercises_for_muscle = []
+            Exercise.find_each do |exercise|
+                if exercise.muscle_id == muscle.id
+                    exercises_for_muscle << exercise
+                    puts "Exercise ##{counter} #{exercise.name}"
+                    puts exercise.demonstration
+                    puts ""
+                    counter+=1
+                end
+            end
+            add_to_wp = prompt.select ("Would you like to add any of these exercises to your workout plan?") do |action|
+                action.choice "Add Exercise #1"
+                action.choice "Add Exercise #2"
+                action.choice "Add Exercise #3"
+                action.choice "Choose Different Muscle"
+            end
 
+            if add_to_wp == "Add Exercise #1"
+
+
+            elsif add_to_wp == "Add Exercise #2"
+
+            elsif add_to_wp == "Add Exercise #3"
+
+            elsif add_to_wp == "Choose Different Muscle"
+                self.navigate_muscle_group
+            end
+        end
     end
   
 
