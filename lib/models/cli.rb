@@ -1,5 +1,6 @@
 require 'pry'
 require 'tty-prompt'
+require "tty-font"
 
 
 class CLI
