@@ -1,10 +1,6 @@
 require_relative '../config/environment'
 require 'tty-prompt'
 
-<<<<<<< HEAD
-=======
-
->>>>>>> master
 
 cli = CLI.new
 
@@ -14,7 +10,7 @@ sleep(1)
 
 CLI.main_menu
 
-# sleep(1) 
+sleep(1) 
 
 # CLI.workout_menu
 

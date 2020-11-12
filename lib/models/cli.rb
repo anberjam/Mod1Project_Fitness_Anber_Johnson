@@ -14,8 +14,6 @@ class CLI
         puts pastel.green(font.write("WorkItOut"))
         puts pastel.green(dumbbell)
 
-        puts pastel.green(font.write("WorkItOut"))
-        puts pastel.green(dumbbell)
     end
 
 
