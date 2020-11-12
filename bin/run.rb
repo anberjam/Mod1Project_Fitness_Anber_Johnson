@@ -13,8 +13,8 @@ CLI.main_menu
 
 sleep(1) 
 
-CLI.workout_menu
+# CLI.workout_menu
 
-sleep(1) 
+# sleep(1) 
 
-CLI.navigate_muscle_group
+# CLI.navigate_muscle_group
