@@ -162,7 +162,7 @@ class CLI
         end
 
         if legs == "Quadriceps"
-        # list exercises here
+        # list exercises her
         elsif legs == "Hamstrings"
 
         elsif legs == "Glutes"
@@ -184,23 +184,13 @@ class CLI
         end
 
         
-        if arms ==
-        muscle = Muscle.find_by(subgroup: arms)
-
-<<<<<<< HEAD
-        Exercise.find_each do |exercise|
-            if exercise.muscle_id == muscle.id
-                puts exercise.name
-                puts exercise.demonstration
-            end
-        end
-
-=======
         
-        elsif arms == "Choose Different Muscle"
+        #muscle = Muscle.find_by(subgroup: arms)
+
+        
+        if arms == "Choose Different Muscle"
             self.navigate_muscle_group
         end
->>>>>>> 9480f4b53ec3bae56e769384c8017e4067805264
     end
 
     def self.chest_muscles
@@ -210,19 +200,11 @@ class CLI
             muscle.choice "Pectoralis Minor"
             muscle.choice "Choose Different Muscle"
         end  
-        muscle = Muscle.find_by(subgroup: chest)
+        #muscle = Muscle.find_by(subgroup: chest)
 
-<<<<<<< HEAD
-        Exercise.find_each do |exercise|
-            if exercise.muscle_id == muscle.id
-                puts exercise.name
-                puts exercise.demonstration
-            end
-=======
-        else chest == "Choose Different Muscle"
+        if chest == "Choose Different Muscle"
             self.navigate_muscle_group
         end
->>>>>>> 9480f4b53ec3bae56e769384c8017e4067805264
     end
 
     def self.shoulder_muscles
@@ -231,9 +213,10 @@ class CLI
             muscle.choice "Deltoids"
             muscle.choice "Choose Different Muscle"
         end
+
         if shoulder = "Deltoids"
             #list excercies
-        else shoulder == "Choose Different Muscle"
+        elsif shoulder == "Choose Different Muscle"
             self.navigate_muscle_group
         end
 
@@ -287,4 +270,3 @@ class CLI
 
 
 end
-
