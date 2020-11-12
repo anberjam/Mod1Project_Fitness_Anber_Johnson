@@ -6,9 +6,12 @@ class CLI
     attr_accessor :exercise, :muscle, :user, :workout_plan
 
     def welcome
-        
-        puts "Welcome to Work It Out!"
-        puts dumbbell
+
+        font = TTY::Font.new(:standard)
+        pastel = Pastel.new
+
+        puts pastel.green(font.write("WorkItOut"))
+        puts pastel.green(dumbbell)
 
     end
 
