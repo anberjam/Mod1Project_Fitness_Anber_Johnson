@@ -225,6 +225,8 @@ class CLI
             elsif add_to_wp == "Add Exercise #3"
                 if Workout_Plan.find_by(exercise_id: exercises_for_muscle[2].id) == nil
                      Workout_Plan.create(exercise_id: exercises_for_muscle[2].id, user_id: @user.id)
+                else
+                    
                 end
             elsif add_to_wp == "Choose Different Muscle"
                 self.navigate_muscle_group
