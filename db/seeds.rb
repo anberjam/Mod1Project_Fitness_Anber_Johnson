@@ -2,6 +2,7 @@ require 'pry'
 Muscle.destroy_all
 Exercise.destroy_all
 User.destroy_all
+Workout_Plan.destroy_all
 
 
 
