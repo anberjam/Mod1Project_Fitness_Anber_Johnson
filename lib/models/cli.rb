@@ -95,7 +95,8 @@ class CLI
         counter = 1
 
         Workout_Plan.all.each do |workout_plan|
-            e = Exercise.find(workout_plan.exercise_id)
+            if workout_plan.user_id == @user.id
+             e = Exercise.find(workout_plan.exercise_id)
             puts "Exercise ##{counter}: #{e.name}"
             puts "#{e.demonstration}"
             puts "Sets: #{e.exercise_set}"
@@ -103,6 +104,7 @@ class CLI
             puts ""
             counter +=1
         end
+    end
         prompt = TTY::Prompt.new
         delete_exercise = prompt.ask ("If you want to delete any of the exercises from your workout plan, please enter its number. Otherwise, enter 'N'")
         if delete_exercise == 'N' || delete_exercise == 'n'
