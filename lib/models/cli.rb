@@ -94,7 +94,13 @@ class CLI
     def self.current_workout
         system('clear')
         counter = 1
+        prompt = TTY::Prompt.new
+        if Workout_Plan.all.count == 0
+            puts "You currently have no exercises in your workout plan"
+            sleep(3)
+            self.workout_menu
 
+        else
         Workout_Plan.all.each do |workout_plan|
             if workout_plan.user_id == @user.id
              e = Exercise.find(workout_plan.exercise_id)
@@ -106,15 +112,19 @@ class CLI
             counter +=1
         end
     end
-        prompt = TTY::Prompt.new
+        
         delete_exercise = prompt.ask ("If you want to delete any of the exercises from your workout plan, please enter its number. Otherwise, enter 'N'")
         if delete_exercise == 'N' || delete_exercise == 'n'
             self.workout_menu 
         elsif Workout_Plan.all.count > 0 && delete_exercise.to_i > 0 && delete_exercise.to_i <= Workout_Plan.count
         Workout_Plan.all[delete_exercise.to_i - 1].destroy
+        
         else
             puts "Invalid Entry. Please Try again"
+            
         end
+        self.current_workout
+    end
     end
 
 
@@ -220,6 +230,8 @@ class CLI
                 self.navigate_muscle_group
             end
         end
+        sleep (0.5)
+        self.navigate_muscle_group
     end
 
     def self.arm_muscles
@@ -272,6 +284,8 @@ class CLI
                 self.navigate_muscle_group
             end
         end
+        sleep (0.5)
+        self.navigate_muscle_group
     end
 
     def self.chest_muscles
@@ -324,6 +338,8 @@ class CLI
                 self.navigate_muscle_group
             end
         end
+        sleep (0.5)
+        self.navigate_muscle_group
     end
 
     def self.shoulder_muscles
@@ -374,6 +390,8 @@ class CLI
                 self.navigate_muscle_group
             end
         end
+        sleep (0.5)
+        self.navigate_muscle_group
     end
 
     def self.back_muscles
@@ -425,6 +443,8 @@ class CLI
                 self.navigate_muscle_group
             end
         end
+        sleep (0.5)
+        self.navigate_muscle_group
     end
 
 
@@ -478,6 +498,8 @@ class CLI
                 self.navigate_muscle_group
             end
         end
+        sleep (0.5)
+        self.navigate_muscle_group
     end
   
 
