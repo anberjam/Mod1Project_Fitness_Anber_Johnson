@@ -99,7 +99,15 @@ class CLI
             puts ""
             counter +=1
         end
-        
+        prompt = TTY::Prompt.new
+        delete_exercise = prompt.ask ("If you want to delete any of the exercises from your workout plan, please enter its number. Otherwise, enter 'N'")
+        if delete_exercise == 'N' || delete_exercise == 'n'
+            self.workout_menu 
+        elsif Workout_Plan.all.count > 0 && delete_exercise.to_i > 0 && delete_exercise.to_i <= Workout_Plan.count
+        Workout_Plan.all[delete_exercise.to_i - 1].destroy
+        else
+            puts "Invalid Entry. Please Try again"
+        end
     end
 
 
