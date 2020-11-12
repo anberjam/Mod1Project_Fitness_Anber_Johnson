@@ -90,6 +90,7 @@ class CLI
     def self.current_workout
         system('clear')
         counter = 1
+
         Workout_Plan.all.each do |workout_plan|
             e = Exercise.find(workout_plan.exercise_id)
             puts "Exercise ##{counter}: #{e.name}"
@@ -197,14 +198,18 @@ class CLI
             end
 
             if add_to_wp == "Add Exercise #1"
-                Workout_Plan.create(exercise_id: exercises_for_muscle[0].id, user_id: @user.id)
+                if Workout_Plan.find_by(exercise_id: exercises_for_muscle[0].id) == nil
+                    Workout_Plan.create(exercise_id: exercises_for_muscle[0].id, user_id: @user.id)
+                end
 
             elsif add_to_wp == "Add Exercise #2"
-                Workout_Plan.create(exercise_id: exercises_for_muscle[1].id, user_id: @user.id)
-
+                if Workout_Plan.find_by(exercise_id: exercises_for_muscle[1].id) == nil
+                    Workout_Plan.create(exercise_id: exercises_for_muscle[1].id, user_id: @user.id)
+                end
             elsif add_to_wp == "Add Exercise #3"
-                Workout_Plan.create(exercise_id: exercises_for_muscle[2].id, user_id: @user.id)
-
+                if Workout_Plan.find_by(exercise_id: exercises_for_muscle[2].id) == nil
+                     Workout_Plan.create(exercise_id: exercises_for_muscle[2].id, user_id: @user.id)
+                end
             elsif add_to_wp == "Choose Different Muscle"
                 self.navigate_muscle_group
             end
@@ -245,12 +250,18 @@ class CLI
             end
 
             if add_to_wp == "Add Exercise #1"
-                Workout_Plan.create(exercise_id: exercises_for_muscle[0].id, user_id: @user.id)
+                if Workout_Plan.find_by(exercise_id: exercises_for_muscle[0].id) == nil
+                    Workout_Plan.create(exercise_id: exercises_for_muscle[0].id, user_id: @user.id)
+                end
 
             elsif add_to_wp == "Add Exercise #2"
-                Workout_Plan.create(exercise_id: exercises_for_muscle[1].id, user_id: @user.id)
+                if Workout_Plan.find_by(exercise_id: exercises_for_muscle[1].id) == nil
+                    Workout_Plan.create(exercise_id: exercises_for_muscle[1].id, user_id: @user.id)
+                end
             elsif add_to_wp == "Add Exercise #3"
-                Workout_Plan.create(exercise_id: exercises_for_muscle[2].id, user_id: @user.id)
+                if Workout_Plan.find_by(exercise_id: exercises_for_muscle[2].id) == nil
+                     Workout_Plan.create(exercise_id: exercises_for_muscle[2].id, user_id: @user.id)
+                end
             elsif add_to_wp == "Choose Different Muscle"
                 self.navigate_muscle_group
             end
@@ -291,12 +302,18 @@ class CLI
             end
 
             if add_to_wp == "Add Exercise #1"
-                Workout_Plan.create(exercise_id: exercises_for_muscle[0].id, user_id: @user.id)
+                if Workout_Plan.find_by(exercise_id: exercises_for_muscle[0].id) == nil
+                    Workout_Plan.create(exercise_id: exercises_for_muscle[0].id, user_id: @user.id)
+                end
 
             elsif add_to_wp == "Add Exercise #2"
-                Workout_Plan.create(exercise_id: exercises_for_muscle[1].id, user_id: @user.id)
+                if Workout_Plan.find_by(exercise_id: exercises_for_muscle[1].id) == nil
+                    Workout_Plan.create(exercise_id: exercises_for_muscle[1].id, user_id: @user.id)
+                end
             elsif add_to_wp == "Add Exercise #3"
-                Workout_Plan.create(exercise_id: exercises_for_muscle[2].id, user_id: @user.id)
+                if Workout_Plan.find_by(exercise_id: exercises_for_muscle[2].id) == nil
+                     Workout_Plan.create(exercise_id: exercises_for_muscle[2].id, user_id: @user.id)
+                end
             elsif add_to_wp == "Choose Different Muscle"
                 self.navigate_muscle_group
             end
@@ -335,18 +352,23 @@ class CLI
             end
 
             if add_to_wp == "Add Exercise #1"
-                Workout_Plan.create(exercise_id: exercises_for_muscle[0].id, user_id: @user.id)
+                if Workout_Plan.find_by(exercise_id: exercises_for_muscle[0].id) == nil
+                    Workout_Plan.create(exercise_id: exercises_for_muscle[0].id, user_id: @user.id)
+                end
 
             elsif add_to_wp == "Add Exercise #2"
-                Workout_Plan.create(exercise_id: exercises_for_muscle[1].id, user_id: @user.id)
+                if Workout_Plan.find_by(exercise_id: exercises_for_muscle[1].id) == nil
+                    Workout_Plan.create(exercise_id: exercises_for_muscle[1].id, user_id: @user.id)
+                end
             elsif add_to_wp == "Add Exercise #3"
-                Workout_Plan.create(exercise_id: exercises_for_muscle[2].id, user_id: @user.id)
+                if Workout_Plan.find_by(exercise_id: exercises_for_muscle[2].id) == nil
+                     Workout_Plan.create(exercise_id: exercises_for_muscle[2].id, user_id: @user.id)
+                end
             elsif add_to_wp == "Choose Different Muscle"
                 self.navigate_muscle_group
             end
         end
     end
-
 
     def self.back_muscles
         prompt = TTY::Prompt.new
@@ -381,12 +403,18 @@ class CLI
             end
 
             if add_to_wp == "Add Exercise #1"
-                Workout_Plan.create(exercise_id: exercises_for_muscle[0].id, user_id: @user.id)
+                if Workout_Plan.find_by(exercise_id: exercises_for_muscle[0].id) == nil
+                    Workout_Plan.create(exercise_id: exercises_for_muscle[0].id, user_id: @user.id)
+                end
 
             elsif add_to_wp == "Add Exercise #2"
-                Workout_Plan.create(exercise_id: exercises_for_muscle[1].id, user_id: @user.id)
+                if Workout_Plan.find_by(exercise_id: exercises_for_muscle[1].id) == nil
+                    Workout_Plan.create(exercise_id: exercises_for_muscle[1].id, user_id: @user.id)
+                end
             elsif add_to_wp == "Add Exercise #3"
-                Workout_Plan.create(exercise_id: exercises_for_muscle[2].id, user_id: @user.id)
+                if Workout_Plan.find_by(exercise_id: exercises_for_muscle[2].id) == nil
+                     Workout_Plan.create(exercise_id: exercises_for_muscle[2].id, user_id: @user.id)
+                end
             elsif add_to_wp == "Choose Different Muscle"
                 self.navigate_muscle_group
             end
@@ -428,12 +456,18 @@ class CLI
             end
 
             if add_to_wp == "Add Exercise #1"
-                #check to make sure exercises don't repeat
-                Workout_Plan.create(exercise_id: exercises_for_muscle[0].id, user_id: @user.id)
+                if Workout_Plan.find_by(exercise_id: exercises_for_muscle[0].id) == nil
+                    Workout_Plan.create(exercise_id: exercises_for_muscle[0].id, user_id: @user.id)
+                end
+
             elsif add_to_wp == "Add Exercise #2"
-                Workout_Plan.create(exercise_id: exercises_for_muscle[1].id, user_id: @user.id)
+                if Workout_Plan.find_by(exercise_id: exercises_for_muscle[1].id) == nil
+                    Workout_Plan.create(exercise_id: exercises_for_muscle[1].id, user_id: @user.id)
+                end
             elsif add_to_wp == "Add Exercise #3"
-                Workout_Plan.create(exercise_id: exercises_for_muscle[2].id, user_id: @user.id)
+                if Workout_Plan.find_by(exercise_id: exercises_for_muscle[2].id) == nil
+                     Workout_Plan.create(exercise_id: exercises_for_muscle[2].id, user_id: @user.id)
+                end
             elsif add_to_wp == "Choose Different Muscle"
                 self.navigate_muscle_group
             end
