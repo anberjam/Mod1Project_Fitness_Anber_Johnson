@@ -1,15 +1,17 @@
 require 'pry'
 require 'tty-prompt'
+require 'tty-font'
 
 
 class CLI
     attr_accessor :exercise, :muscle, :user, :workout_plan
 
     def welcome
-        
-        puts "Welcome to Work It Out!"
-        puts dumbbell
+        font = TTY::Font.new(:block)
+        pastel = Pastel.new
 
+        puts pastel.green(font.write("WorkItOut"))
+        puts pastel.green(dumbbell)
     end
 
 
@@ -45,7 +47,6 @@ class CLI
             sleep(1)
             self.create_account
 
-        # if Username exits try a new user name  
         end
     end
 
@@ -96,8 +97,12 @@ class CLI
 
 
     def self.current_workout
-        # Workout_plan.all.select {|plan|plan.user_id == self}
+        
+        # wp = Workout_Plan.find_by(user_id: @user.id)
+        # puts wp.user_id
+        # puts wp.exercises[0].demonstration
     end
+
 
 
     def dumbbell
@@ -186,11 +191,19 @@ class CLI
             end
 
             if add_to_wp == "Add Exercise #1"
+                puts @user.id
+                puts exercises_for_muscle[0].id
+                wp1 = Workout_Plan.create(user_id: @user.id)
+                puts wp1.user_id
+                wp1.exercises << exercises_for_muscle[0]
+                @user.workout_plan_ids = [wp1.id]
 
-
+            
             elsif add_to_wp == "Add Exercise #2"
+                @user.workout_plans.excercise_id = exercises_for_muscle[1]
 
             elsif add_to_wp == "Add Exercise #3"
+                @user.workout_plans.excercise_id = exercises_for_muscle[2]
 
             elsif add_to_wp == "Choose Different Muscle"
                 self.navigate_muscle_group

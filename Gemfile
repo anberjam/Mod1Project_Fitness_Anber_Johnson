@@ -9,4 +9,5 @@ gem "require_all"
 gem "rake"
 gem "faker"
 gem "tty-prompt"
+gem "tty-font"
 
