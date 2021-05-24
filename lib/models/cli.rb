@@ -44,11 +44,11 @@ class CLI
             system('clear')
             self.login
         else
+            # if Username exits try a new user name  
             puts "You shouldn't share gains with someone else, please try a new name."
             sleep(1)
             self.create_account
 
-        # if Username exits try a new user name  
         end
     end
 
@@ -94,36 +94,38 @@ class CLI
         system('clear')
         counter = 1
         prompt = TTY::Prompt.new
+
         if Workout_Plan.all.count == 0
             puts "You currently have no exercises in your workout plan"
             sleep(3)
             self.workout_menu
 
         else
-        Workout_Plan.all.each do |workout_plan|
-            if workout_plan.user_id == @user.id
-             e = Exercise.find(workout_plan.exercise_id)
-            puts "Exercise ##{counter}: #{e.name}"
-            puts "#{e.demonstration}"
-            puts "Sets: #{e.exercise_set}"
-            puts "Reps: #{e.set_reps}"
-            puts ""
-            counter +=1
-        end
-    end
+            Workout_Plan.all.each do |workout_plan|
+                if workout_plan.user_id == @user.id
+                    e = Exercise.find(workout_plan.exercise_id)
+                    puts "Exercise ##{counter}: #{e.name}"
+                    puts "#{e.demonstration}"
+                    puts "Sets: #{e.exercise_set}"
+                    puts "Reps: #{e.set_reps}"
+                    puts ""
+                    counter +=1
+                end
+            end
         
-        delete_exercise = prompt.ask ("If you want to delete any of the exercises from your workout plan, please enter its number. Otherwise, enter 'N'")
-        if delete_exercise == 'N' || delete_exercise == 'n'
-            self.workout_menu 
-        elsif Workout_Plan.all.count > 0 && delete_exercise.to_i > 0 && delete_exercise.to_i <= Workout_Plan.count
-        Workout_Plan.all[delete_exercise.to_i - 1].destroy
+            delete_exercise = prompt.ask ("If you want to delete any of the exercises from your workout plan, please enter its number. Otherwise, enter 'N'")
         
-        else
-            puts "Invalid Entry. Please Try again"
+            if delete_exercise == 'N' || delete_exercise == 'n'
+                self.workout_menu 
+             elsif Workout_Plan.all.count > 0 && delete_exercise.to_i > 0 && delete_exercise.to_i <= Workout_Plan.count
+                Workout_Plan.all[delete_exercise.to_i - 1].destroy
+        
+            else
+                puts "Invalid Entry. Please Try again"
             
+            end
+            self.current_workout
         end
-        self.current_workout
-    end
     end
 
 
