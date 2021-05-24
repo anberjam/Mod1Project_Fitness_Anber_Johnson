@@ -1,10 +1,12 @@
 require 'pry'
 require 'tty-prompt'
+require "tty-font"
 
 
 class CLI
     attr_accessor :exercise, :muscle, :user, :workout_plan
 
+    # welcome page details
     def welcome
 
         font = TTY::Font.new(:standard)
@@ -12,6 +14,8 @@ class CLI
 
         puts pastel.green(font.write("WorkItOut"))
         puts pastel.green(dumbbell)
+
+        puts pastel.red("Disclaimer: No Ego Lifting")
 
     end
 
@@ -31,6 +35,7 @@ class CLI
             self.close
         end
     end
+
 
     def self.create_account
         prompt = TTY::Prompt.new
@@ -69,6 +74,7 @@ class CLI
     end
 
     def self.workout_menu
+        system("clear")
         prompt = TTY::Prompt.new
         select_create = prompt.select ("Would you like to to do?") do |plan|
             plan.choice "Add to Workout Plan"
@@ -76,23 +82,19 @@ class CLI
             plan.choice "Back to Main Menu"
         end
         
-
         if select_create == "Add to Workout Plan"
             self.navigate_muscle_group
-
         elsif select_create == "See Current Workout Plan"
             self.current_workout
         else select_create == "Back to Main Menu"
             self.main_menu
-        
         end
     end
 
 
 
     def self.current_workout
-        system('clear')
-
+        system("clear")
             counter = 0
             prompt = TTY::Prompt.new
         Workout_Plan.all.each do |workout_plan|
@@ -116,6 +118,7 @@ class CLI
         
         delete_exercise = prompt.ask ("If you want to delete any of the exercises from your workout plan, please enter its number. Otherwise, enter 'N'")
         if delete_exercise == 'N' || delete_exercise == 'n'
+            system("clear")
             self.workout_menu 
         elsif Workout_Plan.all.count > 0 && delete_exercise.to_i > 0 && delete_exercise.to_i <= Workout_Plan.count
         Workout_Plan.all[delete_exercise.to_i - 1].destroy
@@ -152,6 +155,7 @@ class CLI
 
 
     def self.navigate_muscle_group
+        system("clear")
         prompt = TTY::Prompt.new
 
         muscle_group = prompt.select ("Which body part would you like to work out?") do |body_part|
@@ -165,21 +169,30 @@ class CLI
         end
 
         if muscle_group == "Legs"
+            system("clear")
             self.leg_muscles
         elsif muscle_group == "Arms"
+            system("clear")
             self.arm_muscles
         elsif muscle_group == "Chest"
+            system("clear")
             self.chest_muscles
         elsif muscle_group == "Shoulders"
+            system("clear")
             self.shoulder_muscles
         elsif muscle_group == "Back"
+            system("clear")
             self.back_muscles
         elsif muscle_group == "Abs"
+            system("clear")
             self.ab_muscles
         elsif muscle_group == "I would like to return to the main menu"
+            system("clear")
             self.workout_menu
         end
     end
+
+
 
     def self.leg_muscles
         prompt = TTY::Prompt.new
@@ -192,6 +205,7 @@ class CLI
         end
 
         if legs == "Choose Different Muscle"
+            system("clear")
             self.navigate_muscle_group
         
         else
@@ -218,15 +232,21 @@ class CLI
             if add_to_wp == "Add Exercise #1"
                 if Workout_Plan.find_by(exercise_id: exercises_for_muscle[0].id) == nil
                     Workout_Plan.create(exercise_id: exercises_for_muscle[0].id, user_id: @user.id)
+                else
+                    puts "This is already in your plans, please choose another excercise."
                 end
 
             elsif add_to_wp == "Add Exercise #2"
                 if Workout_Plan.find_by(exercise_id: exercises_for_muscle[1].id) == nil
                     Workout_Plan.create(exercise_id: exercises_for_muscle[1].id, user_id: @user.id)
+                else
+                    puts "This is already in your plans, please choose another excercise."
                 end
             elsif add_to_wp == "Add Exercise #3"
                 if Workout_Plan.find_by(exercise_id: exercises_for_muscle[2].id) == nil
                      Workout_Plan.create(exercise_id: exercises_for_muscle[2].id, user_id: @user.id)
+                else
+                    puts "This is already in your plans, please choose another excercise."
                 end
             elsif add_to_wp == "Choose Different Muscle"
                 self.navigate_muscle_group
@@ -246,6 +266,7 @@ class CLI
         end
 
         if arms == "Choose Different Muscle"
+            system("clear")
             self.navigate_muscle_group
         
         else
@@ -272,15 +293,21 @@ class CLI
             if add_to_wp == "Add Exercise #1"
                 if Workout_Plan.find_by(exercise_id: exercises_for_muscle[0].id) == nil
                     Workout_Plan.create(exercise_id: exercises_for_muscle[0].id, user_id: @user.id)
+                else
+                    puts "This is already in your plans, please choose another excercise."
                 end
 
             elsif add_to_wp == "Add Exercise #2"
                 if Workout_Plan.find_by(exercise_id: exercises_for_muscle[1].id) == nil
                     Workout_Plan.create(exercise_id: exercises_for_muscle[1].id, user_id: @user.id)
+                else
+                    puts "This is already in your plans, please choose another excercise."
                 end
             elsif add_to_wp == "Add Exercise #3"
                 if Workout_Plan.find_by(exercise_id: exercises_for_muscle[2].id) == nil
                      Workout_Plan.create(exercise_id: exercises_for_muscle[2].id, user_id: @user.id)
+                else
+                    puts "This is already in your plans, please choose another excercise."
                 end
             elsif add_to_wp == "Choose Different Muscle"
                 self.navigate_muscle_group
@@ -326,15 +353,21 @@ class CLI
             if add_to_wp == "Add Exercise #1"
                 if Workout_Plan.find_by(exercise_id: exercises_for_muscle[0].id) == nil
                     Workout_Plan.create(exercise_id: exercises_for_muscle[0].id, user_id: @user.id)
+                else
+                    puts "This is already in your plans, please choose another excercise."
                 end
 
             elsif add_to_wp == "Add Exercise #2"
                 if Workout_Plan.find_by(exercise_id: exercises_for_muscle[1].id) == nil
                     Workout_Plan.create(exercise_id: exercises_for_muscle[1].id, user_id: @user.id)
+                else
+                    puts "This is already in your plans, please choose another excercise."
                 end
             elsif add_to_wp == "Add Exercise #3"
                 if Workout_Plan.find_by(exercise_id: exercises_for_muscle[2].id) == nil
                      Workout_Plan.create(exercise_id: exercises_for_muscle[2].id, user_id: @user.id)
+                else
+                    puts "This is already in your plans, please choose another excercise."
                 end
             elsif add_to_wp == "Choose Different Muscle"
                 self.navigate_muscle_group
@@ -378,15 +411,21 @@ class CLI
             if add_to_wp == "Add Exercise #1"
                 if Workout_Plan.find_by(exercise_id: exercises_for_muscle[0].id) == nil
                     Workout_Plan.create(exercise_id: exercises_for_muscle[0].id, user_id: @user.id)
+                else
+                    puts "This is already in your plans, please choose another excercise."
                 end
 
             elsif add_to_wp == "Add Exercise #2"
                 if Workout_Plan.find_by(exercise_id: exercises_for_muscle[1].id) == nil
                     Workout_Plan.create(exercise_id: exercises_for_muscle[1].id, user_id: @user.id)
+                else
+                    puts "This is already in your plans, please choose another excercise."
                 end
             elsif add_to_wp == "Add Exercise #3"
                 if Workout_Plan.find_by(exercise_id: exercises_for_muscle[2].id) == nil
                      Workout_Plan.create(exercise_id: exercises_for_muscle[2].id, user_id: @user.id)
+                else
+                    puts "This is already in your plans, please choose another excercise."
                 end
             elsif add_to_wp == "Choose Different Muscle"
                 self.navigate_muscle_group
@@ -431,15 +470,21 @@ class CLI
             if add_to_wp == "Add Exercise #1"
                 if Workout_Plan.find_by(exercise_id: exercises_for_muscle[0].id) == nil
                     Workout_Plan.create(exercise_id: exercises_for_muscle[0].id, user_id: @user.id)
+                else
+                    puts "This is already in your plans, please choose another excercise."
                 end
 
             elsif add_to_wp == "Add Exercise #2"
                 if Workout_Plan.find_by(exercise_id: exercises_for_muscle[1].id) == nil
                     Workout_Plan.create(exercise_id: exercises_for_muscle[1].id, user_id: @user.id)
+                else
+                    puts "This is already in your plans, please choose another excercise."
                 end
             elsif add_to_wp == "Add Exercise #3"
                 if Workout_Plan.find_by(exercise_id: exercises_for_muscle[2].id) == nil
                      Workout_Plan.create(exercise_id: exercises_for_muscle[2].id, user_id: @user.id)
+                else
+                    puts "This is already in your plans, please choose another excercise."
                 end
             elsif add_to_wp == "Choose Different Muscle"
                 self.navigate_muscle_group
@@ -486,15 +531,21 @@ class CLI
             if add_to_wp == "Add Exercise #1"
                 if Workout_Plan.find_by(exercise_id: exercises_for_muscle[0].id) == nil
                     Workout_Plan.create(exercise_id: exercises_for_muscle[0].id, user_id: @user.id)
+                else
+                    puts "This is already in your plans, please choose another excercise."
                 end
 
             elsif add_to_wp == "Add Exercise #2"
                 if Workout_Plan.find_by(exercise_id: exercises_for_muscle[1].id) == nil
                     Workout_Plan.create(exercise_id: exercises_for_muscle[1].id, user_id: @user.id)
+                else
+                    puts "This is already in your plans, please choose another excercise."
                 end
             elsif add_to_wp == "Add Exercise #3"
                 if Workout_Plan.find_by(exercise_id: exercises_for_muscle[2].id) == nil
                      Workout_Plan.create(exercise_id: exercises_for_muscle[2].id, user_id: @user.id)
+                else
+                    puts "This is already in your plans, please choose another excercise."
                 end
             elsif add_to_wp == "Choose Different Muscle"
                 self.navigate_muscle_group
