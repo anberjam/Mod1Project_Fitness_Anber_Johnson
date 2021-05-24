@@ -49,11 +49,11 @@ class CLI
             system('clear')
             self.login
         else
+            # if Username exits try a new user name  
             puts "You shouldn't share gains with someone else, please try a new name."
             sleep(1)
             self.create_account
 
-        # if Username exits try a new user name  
         end
     end
 
@@ -123,12 +123,17 @@ class CLI
         elsif Workout_Plan.all.count > 0 && delete_exercise.to_i > 0 && delete_exercise.to_i <= Workout_Plan.count
         Workout_Plan.all[delete_exercise.to_i - 1].destroy
         
-        else
-            puts "Invalid Entry. Please Try again"
+            if delete_exercise == 'N' || delete_exercise == 'n'
+                self.workout_menu 
+             elsif Workout_Plan.all.count > 0 && delete_exercise.to_i > 0 && delete_exercise.to_i <= Workout_Plan.count
+                Workout_Plan.all[delete_exercise.to_i - 1].destroy
+        
+            else
+                puts "Invalid Entry. Please Try again"
             
+            end
+            self.current_workout
         end
-        self.current_workout
-    end
     end
 
 
